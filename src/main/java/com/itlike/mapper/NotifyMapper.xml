@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itlike.mapper.NotifyMapper" >
+  <resultMap id="BaseResultMap" type="com.itlike.domain.Notify" >
+    <id column="Notify_id" property="notifyId" jdbcType="INTEGER" />
+    <result column="Message_Content" property="messageContent" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="target" property="target" jdbcType="INTEGER" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="sender" property="sender" jdbcType="INTEGER" />
+    <result column="createAt" property="createat" jdbcType="DATE" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from notify
+    where Notify_id = #{notifyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.itlike.domain.Notify" >
+    insert into notify (Notify_id, Message_Content, type, 
+      target, action, sender, 
+      createAt)
+    values (#{notifyId,jdbcType=INTEGER}, #{messageContent,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{target,jdbcType=INTEGER}, #{action,jdbcType=INTEGER}, #{sender,jdbcType=INTEGER}, 
+      #{createat,jdbcType=DATE})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.itlike.domain.Notify" >
+    update notify
+    set Message_Content = #{messageContent,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      target = #{target,jdbcType=INTEGER},
+      action = #{action,jdbcType=INTEGER},
+      sender = #{sender,jdbcType=INTEGER},
+      createAt = #{createat,jdbcType=DATE}
+    where Notify_id = #{notifyId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select Notify_id, Message_Content, type, target, action, sender, createAt
+    from notify
+    where Notify_id = #{notifyId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select Notify_id, Message_Content, type, target, action, sender, createAt
+    from notify
+  </select>
+</mapper>

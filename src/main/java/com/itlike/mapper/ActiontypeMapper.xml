@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itlike.mapper.ActiontypeMapper" >
+  <resultMap id="BaseResultMap" type="com.itlike.domain.Actiontype" >
+    <id column="action_id" property="actionId" jdbcType="INTEGER" />
+    <result column="action_name" property="actionName" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from actiontype
+    where action_id = #{actionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.itlike.domain.Actiontype" >
+    insert into actiontype (action_id, action_name)
+    values (#{actionId,jdbcType=INTEGER}, #{actionName,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.itlike.domain.Actiontype" >
+    update actiontype
+    set action_name = #{actionName,jdbcType=VARCHAR}
+    where action_id = #{actionId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select action_id, action_name
+    from actiontype
+    where action_id = #{actionId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select action_id, action_name
+    from actiontype
+  </select>
+</mapper>

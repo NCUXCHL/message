@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itlike.mapper.SubscriptionMapper" >
+  <resultMap id="BaseResultMap" type="com.itlike.domain.Subscription" >
+    <id column="Subscription_id" property="subscriptionId" jdbcType="INTEGER" />
+    <result column="target_product" property="targetProduct" jdbcType="INTEGER" />
+    <result column="action" property="action" jdbcType="INTEGER" />
+    <result column="user" property="user" jdbcType="INTEGER" />
+    <result column="createdAt" property="createdat" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from subscription
+    where Subscription_id = #{subscriptionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.itlike.domain.Subscription" >
+    insert into subscription (Subscription_id, target_product, action, 
+      user, createdAt)
+    values (#{subscriptionId,jdbcType=INTEGER}, #{targetProduct,jdbcType=INTEGER}, #{action,jdbcType=INTEGER}, 
+      #{user,jdbcType=INTEGER}, #{createdat,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.itlike.domain.Subscription" >
+    update subscription
+    set target_product = #{targetProduct,jdbcType=INTEGER},
+      action = #{action,jdbcType=INTEGER},
+      user = #{user,jdbcType=INTEGER},
+      createdAt = #{createdat,jdbcType=TIMESTAMP}
+    where Subscription_id = #{subscriptionId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select Subscription_id, target_product, action, user, createdAt
+    from subscription
+    where Subscription_id = #{subscriptionId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select Subscription_id, target_product, action, user, createdAt
+    from subscription
+  </select>
+</mapper>
