@@ -21,5 +21,7 @@
     <!--导入springMVC-->
     <import resource="classpath:application-mvc.xml"/>
 
-
+    <bean id="pullAnnounce" class="com.itlike.service.impl.pullAnnounceImpl">
+        <property name="notifyMapper" ref="notifyMapper"></property>
+    </bean>
 </beans>

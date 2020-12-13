@@ -7,6 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public interface createAnnounce {
 
-    public int  createAnnounce(String content,int sender);
+    public int  createdAnnounce(String content,int sender);
 
 }

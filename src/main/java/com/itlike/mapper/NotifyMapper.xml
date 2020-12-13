@@ -41,4 +41,14 @@
     select Notify_id, Message_Content, type, target, action, sender, createAt
     from notify
   </select>
+
+  <select id="selectMaxCreateAt" resultType="java.util.Date"  parameterType="java.lang.Integer">
+    select Max(createAt)
+    from notify
+    where type =#{type,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectDate" resultType="List<Notify>" >
+    select Notify_id, Message_Content, type, target, action, sender, createAt  from  notify where  createAt>(select max(createdAt) from usernotify);
+  </select>
 </mapper>

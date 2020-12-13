@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
+
 @Transactional
 public class createAnnounceImpl implements createAnnounce {
 
-    @Autowired
+
     private NotifyMapper notifyMapper;
     @Override
-    public int createAnnounce(String content,int sender){
+    public int createdAnnounce(String content,int sender){
         int i;
 
         Notify notify=new Notify();

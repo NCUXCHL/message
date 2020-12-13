@@ -1,22 +1,30 @@
 package com.itlike.test;
 
-import com.itlike.service.TeacherService;
-import com.itlike.service.impl.TeacherServiceImpl;
+import com.itlike.domain.Notify;
+import com.itlike.domain.User;
+import com.itlike.service.pullAnnounce;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.web.context.support.XmlWebApplicationContext;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 class testTest1 {
-    private TeacherService teacherService1;
+    private pullAnnounce pullannounce;
     @Test
     public void test0(){
+
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-        teacherService1 = ac.getBean(TeacherService.class);
-        System.out.println(teacherService1.toString());
-        System.out.println(teacherService1.findFields1("teacher").toString());
+        pullannounce = ac.getBean(pullAnnounce.class);
+        List<Notify> notifies =pullannounce.PullAnnounce();
+        for (Iterator<Notify> iterator = notifies.iterator(); iterator.hasNext(); ) {
+            Notify next =  iterator.next();
+            System.out.println(next.getSender());
+
+        }
+
     }
 }

@@ -72,4 +72,5 @@ public class Notify {
     public void setCreateat(Date createat) {
         this.createat = createat;
     }
+
 }

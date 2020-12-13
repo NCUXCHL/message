@@ -47,6 +47,7 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 配置Mapper扫描包 -->
         <property name="basePackage" value="com.itlike.mapper" />
+
     </bean>
 
 </beans>
